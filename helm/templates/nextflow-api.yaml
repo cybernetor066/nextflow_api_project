@@ -84,20 +84,22 @@ spec:
         persistentVolumeClaim:
           claimName: {{ .Values.ExistingLocalPVC.Name }}
       {{ end }}
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: nextflow-api-ip
-  labels:
-    app: nextflow-api-ip
-spec:
-  type: ClusterIP
-  selector:
-    app: nextflow-api-ip
-  ports:
-  - port: 8080
-    targetPort: 8080
+
+# ---
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: nextflow-api-ip
+#   labels:
+#     app: nextflow-api-ip
+# spec:
+#   type: ClusterIP
+#   selector:
+#     app: nextflow-api-ip
+#   ports:
+#   - port: 8080
+#     targetPort: 8080
+
 ---
 {{ if .Values.LoadBalancer.Enabled }}
 apiVersion: v1
@@ -116,6 +118,7 @@ spec:
   selector:
     app: nextflow-api
 {{ end }}
+
 ---
 {{ if .Values.Ingress.Enabled }}
 apiVersion: v1
@@ -150,6 +153,7 @@ spec:
           serviceName: nextflow-api
           servicePort: 8080
 {{ end }}
+
 ---
 {{ if .Values.NodePorts.Enabled }}
 apiVersion: v1
