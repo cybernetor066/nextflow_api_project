@@ -63,8 +63,9 @@ jobs:
 
       - name: Deploy
         uses: ivido/helm-deploy@v1
+        run: kubectl get nodes
         with:
-          release: nextflow-api-0.1.2
+          release: nextflow-api
           namespace: default
           chart: ./helm
           value-files: "./helm/values.yaml"
