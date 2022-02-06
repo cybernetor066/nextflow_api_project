@@ -63,7 +63,7 @@ jobs:
 
       - name: Deploy
         uses: ivido/helm-deploy@v1
-        run: kubectl get nodes
+      - run: kubectl get nodes
         with:
           release: nextflow-api
           namespace: default
