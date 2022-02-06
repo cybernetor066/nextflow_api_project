@@ -54,24 +54,24 @@ jobs:
 
 
 
-#   deploy:
-#     runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v2
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-#       - name: Deploy
-#         uses: ivido/helm-deploy@v1
-#         with:
-#           release: my-release
-#           namespace: my-namespace
-#           chart: ./chart
-#           value-files: "./chart/values.yaml"
-#           secrets-files: "./chart/secrets.yaml"
-#           tag: ${{ github.sha }}
-#         env:
-#           KUBECONFIG_FILE: ${{ secrets.KUBECONFIG }}
-#           GCP_KMS_KEY_FILE: ${{ secrets.GCP_KMS_KEY }}
+      - name: Deploy
+        uses: ivido/helm-deploy@v1
+        with:
+          release: nextflow-api-0.1.2
+          namespace: default
+          chart: ./helm
+          value-files: "./helm/values.yaml"
+          # secrets-files: "./helm/secrets.yaml"
+          tag: ${{ github.sha }}
+        env:
+          KUBECONFIG_FILE: ${{ secrets.KUBECONFIG }}
+          # GCP_KMS_KEY_FILE: ${{ secrets.GCP_KMS_KEY }}
 
 
