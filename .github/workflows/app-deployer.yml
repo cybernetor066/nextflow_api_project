@@ -36,8 +36,9 @@ jobs:
           # secrets-files: "./helm/secrets.yaml"
           tag: ${{ github.sha }}
         env:
-          KUBECONFIG_FILE: ${{ secrets.KUBECONFIG }}
+          # KUBECONFIG_FILE: ${{ secrets.KUBECONFIG }}
           # KUBECONFIG_FILE: ${{ secrets.FAKE_KUBECONFIG }}
+          KUBECONFIG_FILE: ${{ secrets.KUBECONFIG_TEST }}
           # GCP_KMS_KEY_FILE: ${{ secrets.GCP_KMS_KEY }}
 
 
